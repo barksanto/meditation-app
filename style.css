@@ -34,7 +34,7 @@
 	transform: translate(-50%, -50%);
 	pointer-events: none;
 }
-
+/* 
 .time-select {
 	background-color: lightblue;
 }
@@ -45,7 +45,7 @@
 
 .player {
 	background-color: lightgreen;
-}
+} */
 
 .time-display {
 	position: absolute;
@@ -55,5 +55,46 @@
 }
 
 .vid-container {
-	display: none;
+	/* display: none; */
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	z-index: -1;
+}
+
+.time-select button,
+.sound-picker button {
+	color: white;
+	width: 30%;
+	height: 10%;
+	background: none;
+	border: 2px solid white;
+	cursor: pointer;
+	border-radius: 8px;
+	font-size: 20px;
+}
+.time-select button:hover {
+	color: rgb(22, 165, 190);
+	background: white;
+	transition: all 0.5s ease;
+}
+
+.sound-picker button {
+	border: none;
+	height: 120px;
+	width: 120px;
+	border-radius: 50%;
+	padding: 30px;
+}
+
+.sound-picker button:nth-child(1) {
+	background: #4972a1;
+}
+.sound-picker button:nth-child(2) {
+	background: #a14f49;
+}
+
+.sound-picker button img {
+  height: 100%; 
 }
