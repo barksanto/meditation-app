@@ -1,4 +1,4 @@
-const app = () => {
+// const app = () => {
   const song = document.querySelector('.song');
   const play = document.querySelector('.play');
   const outline = document.querySelector('.moving-outline circle');
@@ -43,13 +43,13 @@ const app = () => {
 // create a function to stop and play the sounds
 const checkPlaying = song => {
     if(song.paused){
-      song.play()
+      song.play();
+      video.play();
       play.src = './svg/pause.svg'
-      video.play()
     } else {
-      song.pause();
+      song.pause()
+      video.pause();
       play.src = './svg/play.svg'
-      video.pause()
     }
   }
 
@@ -72,6 +72,6 @@ const checkPlaying = song => {
       video.pause();
     }
   }
-};
+// };
 
-app();
+// app();
