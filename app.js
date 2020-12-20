@@ -3,7 +3,7 @@ const app = () => {
   const play = document.querySelector('.play');
   const outline = document.querySelector('.moving-outline circle');
   const video = document.querySelector('.vid-container video');
-
+  const timeSelect = document.querySelectorAll('.time-select button')
 
   //sounds
   const sounds = document.querySelectorAll('.sound-picker button');
@@ -18,11 +18,27 @@ const app = () => {
   outline.style.strokeDasharray = outlineLength;
   outline.style.strokeDashoffset = outlineLength;
 
+  //pick different sounds
+  sounds.forEach(sound => {
+    sound.addEventListener('click', function(){
+      song.src = this.getAttribute('data-sound');
+      video.src = this.getAttribute('data-video');
+      checkPlaying(song);
+    })
+  })
+
 //play sound
   play.addEventListener('click', () => {
     checkPlaying(song)
   });
 
+  //select sound
+  timeSelect.forEach(option => {
+    option.addEventListener('click', function() {
+      fakeDuration = this.getAttribute('data-time');
+      timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration % 60)}`
+    });
+  });
 
 // create a function to stop and play the sounds
 const checkPlaying = song => {
@@ -49,6 +65,12 @@ const checkPlaying = song => {
     outline.style.strokeDashoffset = progress;
     //animate the text
     timeDisplay.textContent = `${minutes}:${seconds}`
+    if (currentTime >= fakeDuration){
+      song.pause();
+      song.currentTime = 0;
+      play.src = './svg/play.svg'
+      video.pause();
+    }
   }
 };
 
